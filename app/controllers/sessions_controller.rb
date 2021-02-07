@@ -12,8 +12,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       #if @user は　if not @user.nill?と同じ意味　nillガード
       #Success
-      #log_in(@user)
+      log_in user
       # ユーザーログイン後にユーザー情報のページにリダイレクトする
+      redirect_to user
     else
       #Failure
       # alert-danger  =>赤色のフラッシュ
