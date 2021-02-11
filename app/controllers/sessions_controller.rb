@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     #nillガード
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       #if @user は　if not @user.nill?と同じ意味　nillガード
       #Success
       log_in user
@@ -20,11 +20,11 @@ class SessionsController < ApplicationController
       # alert-danger  =>赤色のフラッシュ
       flash.now[:danger] = 'invalid email/password conbination' 
       render 'new'
-      
-
     end
   end
 
   def destroy
+    log_out
+    redirect_to root_url
   end
 end
