@@ -13,6 +13,8 @@ class SessionsController < ApplicationController
       #if @user は　if not @user.nill?と同じ意味　nillガード
       #Success
       log_in user
+      #userのsessionを永続的に保持する　
+      remember user
       # ユーザーログイン後にユーザー情報のページにリダイレクトする
       redirect_to user
     else
