@@ -12,13 +12,15 @@
                   Account <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
+                <%# コメント　current_user => user_path(current_user.id)の省略 %>
+                <%# コメント　GET /users/:id に飛ぶ %>
                   <li><%= link_to "Profile", current_user %></li> 
-                  # current_user => user_path(current_user.id)の省略
-                  # GET /users/:id に飛ぶ
                   <li><%= link_to "Settings", '#' %></li>
                   <li class="divider"></li>
-                  <li> #DELETE /logout => destroy action  #link_toメソッドはデフォルトではGETをリクエスト
+                  <li> 
                     <%= link_to "Log out", logout_path, method: :delete %> 
+                    <%# コメント　DELETE /logout => destroy action %>
+                    <%# コメント　link_toメソッドはデフォルトではGETをリクエスト %>
                   </li>
                 </ul>
               </li>
