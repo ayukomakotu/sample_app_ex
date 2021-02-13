@@ -7,16 +7,16 @@ class SessionsController < ApplicationController
 
   # POST /login
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
+    @user = User.find_by(email: params[:session][:email].downcase)
     #nillガード
-    if user&.authenticate(params[:session][:password])
+    if @user&.authenticate(params[:session][:password])
       #if @user は　if not @user.nill?と同じ意味　nillガード
       #Success
-      log_in user
+      log_in @user
       #userのsessionを永続的に保持する　
-      remember user
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       # ユーザーログイン後にユーザー情報のページにリダイレクトする
-      redirect_to user
+      redirect_to @user
     else
       #Failure
       # alert-danger  =>赤色のフラッシュ
