@@ -26,6 +26,11 @@ class UsersController < ApplicationController
     end
   end
   
+  # GET  /users/:id/edit
+  def edit
+    @user = User.find(params[:id])
+    # => app/views/users/edit.html.erb
+  end
 
 
   private
