@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       #userのsessionを永続的に保持する　
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       # ユーザーログイン後にユーザー情報のページにリダイレクトする
-      redirect_to @user
+      redirect_back_or @user
     else
       #Failure
       # alert-danger  =>赤色のフラッシュ
