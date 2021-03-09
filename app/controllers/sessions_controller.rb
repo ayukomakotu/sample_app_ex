@@ -12,11 +12,18 @@ class SessionsController < ApplicationController
     if @user&.authenticate(params[:session][:password])
       #if @user は　if not @user.nill?と同じ意味　nillガード
       #Success
-      log_in @user
-      #userのsessionを永続的に保持する　
-      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      # ユーザーログイン後にユーザー情報のページにリダイレクトする
-      redirect_back_or @user
+      if @user.activated?
+        log_in @user
+        #userのsessionを永続的に保持する　
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+        # ユーザーログイン後にユーザー情報のページにリダイレクトする
+        redirect_back_or @user
+      else
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
       #Failure
       # alert-danger  =>赤色のフラッシュ
