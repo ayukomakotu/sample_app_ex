@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
-gem 'rails',                   '6.0.3'
+gem 'rails',                   '6.1.3.1'
 gem 'active_storage_validations'
 gem 'image_processing'
 gem 'mini_magick'
@@ -13,7 +13,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass'
 gem 'puma'
-gem 'sass-rails'
+gem 'sassc-rails'
 gem 'webpacker'
 gem 'turbolinks'
 gem 'jbuilder'            
