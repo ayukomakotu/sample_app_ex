@@ -22,5 +22,3 @@ import "bootstrap"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-//修正　by update rails6.0.3からrails6.1.3.6
