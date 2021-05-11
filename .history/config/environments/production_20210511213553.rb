@@ -78,7 +78,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'gmail.com',
     user_name:            'yamamesan708@gmail.com',            
-    password              'jijs　abxp　mnxj　wwpj',
+    password              'jijs　abxp　mnxj　wwpj'
     authentication:       :plain,
   }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
