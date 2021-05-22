@@ -29,7 +29,7 @@ end
 group :development do
   gem 'web-console'
   gem 'listen'
-  gem 'rack-mini-profiler'
+  #gem 'rack-mini-profiler'
   gem 'spring'
 end
 
