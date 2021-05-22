@@ -1,0 +1,1 @@
+Rack::MiniMime.config.start_hidden = true
