@@ -2,6 +2,8 @@
 
 one:
   in_reply_to: 1
+  micropost: one
 
 two:
   in_reply_to: 1
+  micropost: two
