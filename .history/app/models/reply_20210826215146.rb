@@ -1,3 +1,3 @@
 class Reply < ApplicationRecord
-  belongs_to :micropost
+    belongs_to :micropost
 end

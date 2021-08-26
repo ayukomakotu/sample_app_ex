@@ -13,7 +13,6 @@ class MicropostsController < ApplicationController
         @reply = @micropost.replies.build(in_reply_to: reply_user.id)
         @reply.save
       end
-      debugger
       flash[:success] = "Micropost created!"
       redirect_to root_url
     else

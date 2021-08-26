@@ -5,14 +5,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      reply_names = @micropost.content.scan(/@[0-9a-z\s][^\n\r]{,50}/i).map{
-        |name|name.delete("@")
-      }
-      reply_names.each do |reply_name|
-        reply_user = User.find_by(name: reply_name)
-        @reply = @micropost.replies.build(in_reply_to: reply_user.id)
-        @reply.save
-      end
+      reply_user = @micropost.content.scan(/@([0-9a-z\s][^\n]{,50})/i)
       debugger
       flash[:success] = "Micropost created!"
       redirect_to root_url
