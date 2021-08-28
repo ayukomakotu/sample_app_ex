@@ -3,6 +3,7 @@ require 'test_helper'
 class MicropostTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
+    @other_user = users(:archer)
     @micropost = @user.microposts.build(content: "Lorem ipsum")
   end
 
@@ -27,6 +28,14 @@ class MicropostTest < ActiveSupport::TestCase
 
   test "order should be most recent first" do
     assert_equal microposts(:most_recent), Micropost.first
+  end
+
+  test "associated reply with destroy micropost" do
+    @micropost.save
+    @micropost.replies.create!(in_reply_to: @other_user.id)
+    assert_difference 'Reply.count', -1 do
+      @micropost.destroy
+    end
   end
 end
 
