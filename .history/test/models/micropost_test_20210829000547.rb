@@ -4,7 +4,8 @@ class MicropostTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
     @other_user = users(:archer)
-    @micropost = @user.microposts.build(content: "Lorem ipsum")
+    @micropost = @user.microposts.build(content:
+                         "@#{@other_user}Lorem ipsum")
   end
 
   test "should be valid" do
@@ -32,7 +33,6 @@ class MicropostTest < ActiveSupport::TestCase
 
   test "associated reply with destroy micropost" do
     @micropost.save
-    @micropost.replies.create!(in_reply_to: @other_user.id)
     assert_difference 'Reply.count', -1 do
       @micropost.destroy
     end

@@ -30,12 +30,7 @@ class MicropostTest < ActiveSupport::TestCase
     assert_equal microposts(:most_recent), Micropost.first
   end
 
-  test "associated reply with destroy micropost" do
-    @micropost.save
-    @micropost.replies.create!(in_reply_to: @other_user.id)
-    assert_difference 'Reply.count', -1 do
-      @micropost.destroy
-    end
-  end
+  test "destroy reoly with micropost" do
+
 end
 
