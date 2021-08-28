@@ -60,9 +60,10 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
       post microposts_path, params: { micropost: { 
         content: "@no exit user\ntest"}}
     end
-    assert_difference 'Reply.count', 1 do
-      post microposts_path, params: {micropost: { 
+    assert_difference 'Reply.count' 1 do
+      post microposts_path, params: {microposts: { 
         content: "@#{@other_user.name}\ntest"}}
+      end
     end
   end
 end

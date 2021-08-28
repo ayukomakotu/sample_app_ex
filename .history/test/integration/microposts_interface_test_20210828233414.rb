@@ -56,7 +56,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   test "micropost with reply" do
     log_in_as(@user)
     get root_path
-    assert_no_difference 'Reply.count' do
+    assert_difference 'Reply.count', 1 do
       post microposts_path, params: { micropost: { 
         content: "@no exit user\ntest"}}
     end

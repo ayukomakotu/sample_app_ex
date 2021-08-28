@@ -3,7 +3,6 @@ require 'test_helper'
 class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
-    @other_user = users(:archer)
   end
 
   test "micropost interface" do
@@ -57,12 +56,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get root_path
     assert_no_difference 'Reply.count' do
-      post microposts_path, params: { micropost: { 
-        content: "@no exit user\ntest"}}
-    end
-    assert_difference 'Reply.count', 1 do
-      post microposts_path, params: {micropost: { 
-        content: "@#{@other_user.name}\ntest"}}
+      post microposts_path, params: { micropost: { content "@no exit user\ntest"}}
     end
   end
 end

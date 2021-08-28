@@ -8,13 +8,13 @@ class MicropostsController < ApplicationController
       reply_names = @micropost.content.scan(/@[0-9a-z\s][^\n\r]{,50}/i).map{
         |name|name.delete("@")
       }
-      reply_names.each do |reply_name|
-        reply_user = User.find_by(name: reply_name)
-        if reply_user 
-          @reply = @micropost.replies.build(in_reply_to: reply_user.id)
-          @reply.save
-        end
-      end
+      #reply_names.each do |reply_name|
+        #reply_user = User.find_by(name: reply_name)
+        #if reply_user 
+         # @reply = @micropost.replies.build(in_reply_to: reply_user.id)
+          #@reply.save
+        #end
+      #end
       flash[:success] = "Micropost created!"
       redirect_to root_url
     else
