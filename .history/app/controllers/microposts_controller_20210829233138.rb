@@ -5,7 +5,14 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      @micropost.save_reply_user
+      reply_names = @micropost.reply_names
+      reply_names.each do |reply_name|
+        reply_user = User.find_by(name: reply_name)
+        if reply_user 
+          @reply = @micropost.replies.build(in_reply_to: reply_user.id)
+          @reply.save
+        end
+      end
       flash[:success] = "Micropost created!"
       redirect_to root_url
     else

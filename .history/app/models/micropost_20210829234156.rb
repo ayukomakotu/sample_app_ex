@@ -15,14 +15,17 @@ class Micropost < ApplicationRecord
     image.variant(resize_to_limit: [500, 500])
   end
 
-  def save_reply_user
-    reply_names = self.content.scan(/@[0-9a-z\s][^\n\r]{,50}/i).map{
+  def reply_names
+    self.content.scan(/@[0-9a-z\s][^\n\r]{,50}/i).map{
         |name|name.delete("@")
       }
+  end
+
+  def save_reply_user(reply_names, micropost)
     reply_names.each do |reply_name|
       reply_user = User.find_by(name: reply_name)
       if reply_user 
-        self.replies.create!(in_reply_to: reply_user.id)
+        micropost.replies.create!(in_reply_to: reply_user.id)
       end
     end
   end
