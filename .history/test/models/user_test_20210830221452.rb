@@ -50,15 +50,6 @@ class UserTest < ActiveSupport::TestCase
     assert_not duplicate_user.valid?
   end
  
-  test "name should be unique" do
-    duplicate_user = User.new(name: "Example User", 
-                              email: "test_name_unique@example.com",
-                              password: "foobar", 
-                              password_confirmation: "foobar")
-    @user.save
-    assert_not duplicate_user.valid?
-  end
-
   test "password should be present (nonblank)" do
     @user.password = @user.password_confirmation = " " * 6
     assert_not @user.valid?
