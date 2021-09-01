@@ -14,7 +14,7 @@ class Micropost < ApplicationRecord
   def display_image
     image.variant(resize_to_limit: [500, 500])
   end
-
+  # 返信ユーザー名の検知と保存
   def save_reply_user
     reply_names = self.content.scan(/@[0-9a-z\s][^\n\r]{,50}/i).map{
         |name|name.delete("@")
