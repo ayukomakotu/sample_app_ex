@@ -45,8 +45,3 @@ van:
   created_at: <%= 4.hours.ago %>
   user: lana
 
-reply:
-  content: "@Michael Example\nreply test"
-  created_at: <%= 4.hours.ago %>
-  user: archer
-

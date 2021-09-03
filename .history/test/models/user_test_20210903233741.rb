@@ -111,7 +111,6 @@ class UserTest < ActiveSupport::TestCase
     end
     #返信を確認
     @reply = Reply.new(in_reply_to: michael.id, micropost_id: reply.id)
-    @reply.save
     assert michael.feed.include?(reply)
   end
 end
