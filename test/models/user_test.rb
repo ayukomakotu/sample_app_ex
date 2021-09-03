@@ -96,6 +96,7 @@ class UserTest < ActiveSupport::TestCase
     michael = users(:michael)
     archer  = users(:archer)
     lana    = users(:lana)
+    reply   = microposts(:reply)
     # フォローしているユーザーの投稿を確認
     lana.microposts.each do |post_following|
       assert michael.feed.include?(post_following)
@@ -108,5 +109,9 @@ class UserTest < ActiveSupport::TestCase
     archer.microposts.each do |post_unfollowed|
       assert_not michael.feed.include?(post_unfollowed)
     end
+    #返信を確認
+    @reply = Reply.new(in_reply_to: michael.id, micropost_id: reply.id)
+    @reply.save
+    assert michael.feed.include?(reply)
   end
 end
