@@ -3,10 +3,8 @@ require 'test_helper'
 class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
-    @reply_user = users(:archer)
-    @follower = users(:lana)
-    @other_user = users(:malory)
-
+    @other_user = users(:archer)
+    @non_reply_user = users(:lana)
   end
 
   test "micropost interface" do
@@ -57,34 +55,22 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   end
 
   test "micropost with reply" do
-    #返信先ユーザー名が無効
     log_in_as(@user)
     get root_path
     assert_no_difference 'Reply.count' do
       post microposts_path, params: { micropost: { 
         content: "@no exit user\ntest"}}
     end
-    #返信宛ユーザー名が有効
-    content = "@#{@reply_user.name}\ntest"
     assert_difference 'Reply.count', 1 do
       post microposts_path, params: {micropost: { 
-        content: content}}
+        content: "@#{@other_user.name}\ntest"}}
     end
-    #返信したユーザー
-    get root_path
-    assert_match content, response.body
-    #返信されたユーザー
-    log_in_as(@reply_user)
-    get root_path
-    assert_match content, response.body
-    #返信をしたユーザーをフォローしているユーザー
-    log_in_as(@follower)
-    get root_path
-    assert_match content, response.body
-    #返信をしたユーザーをフォローしていないユーザー
     log_in_as(@other_user)
+    debugger
     get root_path
-    assert_no_match content, response.body
+    assert_match "@#{@other_user.name}\ntest", response.body
+    log_in_as(@user)
+    assert_no_match "@#{@other_user.name}\ntest", response.body
   end
 
 end

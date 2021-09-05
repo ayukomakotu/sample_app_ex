@@ -1,6 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
+require_relative "../config/environment"
+require "rails/test_help"
 require "minitest/reporters"
 Minitest::Reporters.use!
 
@@ -31,6 +31,10 @@ class ActionDispatch::IntegrationTest
     post login_path, params: { session: { email: user.email,
                                           password: password,
                                           remember_me: remember_me } }
+  end
+
+  def log_out_as(user)
+    session.delete(:user_id)
   end
 end
 
