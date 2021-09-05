@@ -23,7 +23,8 @@ class User < ApplicationRecord
     before_save   :downcase_email
     before_create :create_activation_digest
     validates :name,  presence: true, 
-                      length: { maximum: 50 }
+                      length: { maximum: 50 },
+                      uniqueness: true
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, 
                       length: { maximum: 255 },
@@ -105,8 +106,10 @@ class User < ApplicationRecord
         #self.idを省略=> id
         following_ids = "SELECT followed_id FROM relationships
                      WHERE follower_id = :user_id"
+        # 返信用micropostをfeedに含める
+        reply_ids = "SELECT micropost_id FROM replies WHERE in_reply_to = :user_id"
         Micropost.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id)
+                     OR user_id = :user_id OR id IN (#{reply_ids})", user_id: id)
     end
 
     # ユーザーをフォローする

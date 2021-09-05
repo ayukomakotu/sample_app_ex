@@ -1,6 +1,7 @@
 class Micropost < ApplicationRecord
   belongs_to       :user
   # default: foreign_key: user_id
+  has_many         :replies, dependent: :destroy
   has_one_attached :image
   default_scope -> { self.order(created_at: :desc) }
   validates :user_id, presence: true
@@ -12,5 +13,17 @@ class Micropost < ApplicationRecord
   # 表示用のリサイズ済み画像を返す
   def display_image
     image.variant(resize_to_limit: [500, 500])
+  end
+  # 返信ユーザー名の検知と保存
+  def including_replies
+    reply_names = self.content.scan(/@[0-9a-z\s][^\n\r]{,50}/i).map{
+        |name|name.delete("@")
+      }
+    reply_names.each do |reply_name|
+      reply_user = User.find_by(name: reply_name)
+      if reply_user 
+        self.replies.create!(in_reply_to: reply_user.id)
+      end
+    end
   end
 end

@@ -42,11 +42,23 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email addresses should be unique" do
-    duplicate_user = @user.dup
+    duplicate_user = User.new(name: "test email unique", 
+                              email: "user@example.com",
+                              password: "foobar", 
+                              password_confirmation: "foobar")
     @user.save
     assert_not duplicate_user.valid?
   end
  
+  test "name should be unique" do
+    duplicate_user = User.new(name: "Example User", 
+                              email: "test_name_unique@example.com",
+                              password: "foobar", 
+                              password_confirmation: "foobar")
+    @user.save
+    assert_not duplicate_user.valid?
+  end
+
   test "password should be present (nonblank)" do
     @user.password = @user.password_confirmation = " " * 6
     assert_not @user.valid?
@@ -84,6 +96,7 @@ class UserTest < ActiveSupport::TestCase
     michael = users(:michael)
     archer  = users(:archer)
     lana    = users(:lana)
+    reply   = microposts(:reply)
     # フォローしているユーザーの投稿を確認
     lana.microposts.each do |post_following|
       assert michael.feed.include?(post_following)
@@ -96,5 +109,9 @@ class UserTest < ActiveSupport::TestCase
     archer.microposts.each do |post_unfollowed|
       assert_not michael.feed.include?(post_unfollowed)
     end
+    #返信を確認
+    @reply = Reply.new(in_reply_to: michael.id, micropost_id: reply.id)
+    @reply.save
+    assert michael.feed.include?(reply)
   end
 end
