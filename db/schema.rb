@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_150631) do
+ActiveRecord::Schema.define(version: 2021_09_05_150208) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_150631) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_08_22_150631) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "in_reply_to"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
@@ -58,6 +57,15 @@ ActiveRecord::Schema.define(version: 2021_08_22_150631) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.integer "in_reply_to"
+    t.integer "micropost_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["micropost_id", "created_at"], name: "index_replies_on_micropost_id_and_created_at"
+    t.index ["micropost_id"], name: "index_replies_on_micropost_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,9 +82,11 @@ ActiveRecord::Schema.define(version: 2021_08_22_150631) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "microposts", "users"
+  add_foreign_key "replies", "microposts"
 end
