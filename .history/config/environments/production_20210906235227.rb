@@ -75,10 +75,10 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     address:              'smtp.gmail.com',
     enable_starttls_auto: true,
-    port                  587,
+    port:                 587,
     domain:               'gmail.com',
     user_name:            'yamamesan708@gmail.com',            
-    password              'jijs　abxp　mnxj　wwpj'
+    password:             'imsjvcbhtnwsqygw',
     authentication:       :plain,
   }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
