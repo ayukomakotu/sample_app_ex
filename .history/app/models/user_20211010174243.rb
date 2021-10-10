@@ -18,6 +18,9 @@ class User < ApplicationRecord
                                          source: :follower
     has_many :messages
     has_many :memberships
+    #has_many :talks,                     through: :memberships,
+     #                                     source: :talk
+                                #デフォルトsource: :user
 
     attr_accessor :remember_token, 
                   :activation_token,
