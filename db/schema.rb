@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_05_150208) do
+ActiveRecord::Schema.define(version: 2021_10_09_152300) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,26 @@ ActiveRecord::Schema.define(version: 2021_09_05_150208) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "talk_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["talk_id"], name: "index_memberships_on_talk_id"
+    t.index ["user_id", "talk_id"], name: "index_memberships_on_user_id_and_talk_id", unique: true
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "talk_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["talk_id"], name: "index_messages_on_talk_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -68,6 +88,12 @@ ActiveRecord::Schema.define(version: 2021_09_05_150208) do
     t.index ["micropost_id"], name: "index_replies_on_micropost_id"
   end
 
+  create_table "talks", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["updated_at"], name: "index_talks_on_updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -87,6 +113,10 @@ ActiveRecord::Schema.define(version: 2021_09_05_150208) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "memberships", "talks"
+  add_foreign_key "memberships", "users"
+  add_foreign_key "messages", "talks"
+  add_foreign_key "messages", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "replies", "microposts"
 end
