@@ -22,4 +22,14 @@ class MessageTest < ActiveSupport::TestCase
     @message.talk_id = nil
     assert_not @message.valid?
   end
+
+  test "content should be blank" do
+    @message.content = "    "
+    assert_not @message.valid?
+  end
+
+  test "content should be too long" do
+    @message.content = "a"*141
+    assert_not @message.valid?
+  end
 end
