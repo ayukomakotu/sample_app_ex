@@ -20,8 +20,7 @@ class User < ApplicationRecord
     has_many :memberships
     has_many :talks,                    through: :memberships,
                                          source: :talk
-    #user.talksでuserの参加しているtalkを表示する
-    #userのuser_idを参照してmembershipを取り出し、そのmembershipからtalk_idを参照してtalkを取り出す
+
     attr_accessor :remember_token, 
                   :activation_token,
                   :reset_token

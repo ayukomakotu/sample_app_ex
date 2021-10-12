@@ -1,0 +1,16 @@
+<li id="talk-<%= talk.id %>">
+    <div class="user_avatars">
+        <% if talk.members.any? %>
+            <% talk.members.each do |member| %>
+                <%= gravatar_for(member, size: 50) %>
+            <% end %>
+        <% end %>
+    </div>
+    <span class="user"><%= talk.messages.first.user %></span>
+    <span class="content">
+        <%= talk.messages.first.content %>
+    </span>
+    <span class="timestamp">
+        Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    </span>
+</li>

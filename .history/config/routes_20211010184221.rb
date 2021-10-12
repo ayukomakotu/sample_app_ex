@@ -18,15 +18,14 @@ Rails.application.routes.draw do
     end
   end
 
-  
-
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   resources :replies,             only: [:create, :destroy]
-  resources :talks,               only: :create
-  get '/users/:id/talk_index', to: 'talks#index', as: :talk_index
+  resources :talks do
+    get 'talk_index', on: :member
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
