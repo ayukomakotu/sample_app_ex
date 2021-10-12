@@ -1,0 +1,18 @@
+<%= provide(:title, 'messages') %>
+<div class="row">
+    <aside class="col-xs-4">
+        <section class="user_info">
+            <%= render 'shared/user_info' %>
+        </section>
+        <section class="stats">
+            <%= render 'shared/stats' %>
+        </section>
+    </aside>
+    <div class="col-xs-8">
+        <h1>All messages</h1>
+        <div class="talks">
+            <%= render @talks %>
+        </div>
+    </div>
+</div>
+
