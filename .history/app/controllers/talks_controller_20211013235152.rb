@@ -5,6 +5,7 @@ class TalksController < ApplicationController
     end
 
     def show
+        debugger
         @talk = Talk.find(params[:id])
     end
 end
