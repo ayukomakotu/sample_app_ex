@@ -34,3 +34,18 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+(0..49).each do |n|
+  Talk.create!
+  Membership.create!(talk_id: n+1, user_id: users[n].id)
+  if n==0
+    Membership.create!(talk_id: n+1, user_id: users[49].id)
+  else
+    Membership.create!(talk_id: n+1, user_id: users[0].id)
+  end
+end
+(0..49).each do |n|
+  content = Faker::Lorem.sentence(word_count: 5)
+  Message.create!(talk_id: n+1, user_id: users[n].id, content: content)
+  Message.create!(talk_id: n+1, user_id: users[0].id, content: content)
+end
