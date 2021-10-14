@@ -1,1 +1,13 @@
-<%= provide(:title, @talk.members.map(&:name)) %>
+<%= provide(:title, @title) %>
+<div class="members">
+    <% @talk.members.each do |member| %>
+        <li>
+            <%= link_to gravatar_for(member, size: 50), user_path(member) %>
+            <%= link_to member.name, user_path(member) %>
+        </li>
+    <% end %>
+</div> 
+
+<div class="messages">
+    <%= render @messages %>
+</div>
