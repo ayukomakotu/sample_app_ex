@@ -377,58 +377,35 @@ span.image {
     border-top: 1px solid #e8e8e8;
   }
   .my_message{
-    display: block;
-    text-align: right;
-    .user {
-      margin-top: 5em;
-      padding-top: 0;
-    }
-    .content {
-      display: block;
-      margin-left: 60px;
-      img {
-        display: block;
-        padding: 5px 0;
-      }
-    }
-    .timestamp {
-      color: $gray-light;
-      display: block;
-      margin-left: 60px;
-    }
-    .gravatar {
-      display: block;
-      margin-right: 10px;
-      margin-top: 5px;
-    }
+    overflow: hidden;
+    float: right;
   }
   .others_message{
+    overflow: hidden;
+    float: left;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
     display: block;
-    text-align: left;
-    .user {
-      margin-top: 5em;
-      padding-top: 0;
-    }
-    .content {
+    margin-left: 60px;
+    img {
       display: block;
-      margin-left: 60px;
-      img {
-        display: block;
-        padding: 5px 0;
-      }
-    }
-    .timestamp {
-      color: $gray-light;
-      display: block;
-      margin-left: 60px;
-    }
-    .gravatar {
-      display: block;
-      margin-right: 10px;
-      margin-top: 5px;
+      padding: 5px 0;
     }
   }
-  
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
 }
 
 

@@ -1,0 +1,8 @@
+<%= provide(:title, @title %>
+<div class="members">
+    <% @talk.members.each do |member| %>
+        <%= link_to gravatar_for(member, size: 50), member %>
+        <%= link_to member.name, member %>
+    <% end %>
+</div> 
+    

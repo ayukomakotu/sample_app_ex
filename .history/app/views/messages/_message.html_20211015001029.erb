@@ -1,0 +1,19 @@
+<li id="message-<%= message.id %>">
+    <% if message.user == current_user %>
+        <span class="my_message">
+            <%= link_to gravatar_for(message.user, size: 50), message.user %>
+            <%= message.user.name %>
+        </span>
+        <span class="content">
+            <%= message.content %>
+        </span>
+    <% else %>
+        <span class="my_message">
+            <%= link_to gravatar_for(message.user, size: 50), message.user %>
+            <%= message.name %>
+        </span>
+        <span class="content">
+            <%= message.content %>
+        </span>
+    <% end %>
+</li>

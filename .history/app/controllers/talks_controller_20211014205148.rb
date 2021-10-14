@@ -7,6 +7,5 @@ class TalksController < ApplicationController
     def show
         @talk = Talk.find(params[:id])
         @title = @talk.members.map(&:name).delete(current_user.name)
-        @messages = @talk.messages
     end
 end
