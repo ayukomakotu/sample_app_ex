@@ -12,10 +12,6 @@
                     <%= message.content %>
                 </span>
             </div>
-            <span class="timestamp">
-                Posted <%= time_ago_in_words(message.created_at) %> ago.
-            </span>        
-            
             
         </section>
     <% else %>
@@ -31,10 +27,6 @@
                     <%= message.content %>
                 </span>
             </div>
-            <span class="timestamp">
-                Posted <%= time_ago_in_words(message.created_at) %> ago.
-            </span>
-            
         </section>
     <% end %>
 </li>

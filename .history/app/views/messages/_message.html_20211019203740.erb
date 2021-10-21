@@ -6,16 +6,13 @@
             </span>
             <div class="my_frame">
                 <span class="user">
+                    
                     <%= link_to message.user.name, message.user %>
                 </span>
                 <span class="content">
                     <%= message.content %>
                 </span>
             </div>
-            <span class="timestamp">
-                Posted <%= time_ago_in_words(message.created_at) %> ago.
-            </span>        
-            
             
         </section>
     <% else %>
@@ -31,10 +28,6 @@
                     <%= message.content %>
                 </span>
             </div>
-            <span class="timestamp">
-                Posted <%= time_ago_in_words(message.created_at) %> ago.
-            </span>
-            
         </section>
     <% end %>
 </li>

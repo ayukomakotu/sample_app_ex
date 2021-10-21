@@ -388,7 +388,7 @@ span.image {
       margin-top: 10px;
     }
     .user {
-      display: block;
+      text-align: right;
       padding-top: 5px;
       padding-left: 10px;
       
@@ -444,8 +444,7 @@ span.image {
     .timestamp {
       color: $gray-light;
       display: block;
-      text-align: right;
-      margin-right: 70px;
+      margin-left: 60px;
     }
     .gravatar {
       float: right;
@@ -453,6 +452,7 @@ span.image {
       margin-top: 5px;
     }
   }
+  
 }
 
 

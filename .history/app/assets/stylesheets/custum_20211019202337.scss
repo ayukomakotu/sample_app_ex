@@ -377,26 +377,18 @@ span.image {
   }
   .my_message{
     display: block;
-    .my_frame{
-      background-color: greenyellow;
-      border-top: 3px solid #e8e8e8;
-      border-bottom: 3px solid #e8e8e8;
-      border-left: 3px solid #e8e8e8;
-      border-right: 3px solid #e8e8e8;
-      border-radius: 8px;
-      margin-left: 60px;
-      margin-top: 10px;
-    }
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
     .user {
-      display: block;
-      padding-top: 5px;
-      padding-left: 10px;
+      margin-top: 5em;
+      padding-top: 0;
       
     }
     .content {
       display: block;
-      padding-left: 10px;
-      padding-bottom: 10px;
+      margin-left: 60px;
       img {
         display: block;
         padding: 5px 0;
@@ -409,33 +401,21 @@ span.image {
     }
     .gravatar {
       display: block;
+      margin-right: 10px;
       margin-top: 5px;
     }
-  
   }
   .others_message{
     display: block;
-    .others_frame{
-      background-color: #e8e8e8;
-      border-top: 3px solid #e8e8e8;
-      border-bottom: 3px solid #e8e8e8;
-      border-left: 3px solid #e8e8e8;
-      border-right: 3px solid #e8e8e8;
-      border-radius: 8px;
-      margin-right: 80px;
-      margin-top: 10px;
-    }
     .user {
       text-align: right;
       display: block;
-      padding-top: 5px;
-      padding-right: 10px;
+      margin-right: 100px;
     }
     .content {
       text-align: right;
       display: block;
-      padding-right: 10px;
-      padding-bottom: 10px;
+      margin-right: 100px;
       img {
         display: block;
         padding: 5px 0;
@@ -444,8 +424,7 @@ span.image {
     .timestamp {
       color: $gray-light;
       display: block;
-      text-align: right;
-      margin-right: 70px;
+      margin-left: 60px;
     }
     .gravatar {
       float: right;
@@ -453,6 +432,7 @@ span.image {
       margin-top: 5px;
     }
   }
+  
 }
 
 

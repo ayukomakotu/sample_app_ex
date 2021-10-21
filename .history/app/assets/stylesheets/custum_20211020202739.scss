@@ -384,28 +384,27 @@ span.image {
       border-left: 3px solid #e8e8e8;
       border-right: 3px solid #e8e8e8;
       border-radius: 8px;
-      margin-left: 60px;
-      margin-top: 10px;
-    }
-    .user {
-      display: block;
-      padding-top: 5px;
-      padding-left: 10px;
-      
-    }
-    .content {
-      display: block;
-      padding-left: 10px;
-      padding-bottom: 10px;
-      img {
-        display: block;
-        padding: 5px 0;
+      padding-left: 60px;
+      padding-top:  10px;
+      .user {
+        padding-top: 5px;
+        padding-left: 10px;
+        
       }
-    }
-    .timestamp {
-      color: $gray-light;
-      display: block;
-      margin-left: 60px;
+      .content {
+        display: block;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        img {
+          display: block;
+          padding: 5px 0;
+        }
+      }
+      .timestamp {
+        color: $gray-light;
+        display: block;
+        margin-left: 60px;
+      }
     }
     .gravatar {
       display: block;
@@ -428,14 +427,14 @@ span.image {
     .user {
       text-align: right;
       display: block;
-      padding-top: 5px;
-      padding-right: 10px;
+      margin-top: 5px;
+      margin-right: 10px;
     }
     .content {
       text-align: right;
       display: block;
-      padding-right: 10px;
-      padding-bottom: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
       img {
         display: block;
         padding: 5px 0;
@@ -444,8 +443,7 @@ span.image {
     .timestamp {
       color: $gray-light;
       display: block;
-      text-align: right;
-      margin-right: 70px;
+      margin-left: 60px;
     }
     .gravatar {
       float: right;
@@ -453,6 +451,7 @@ span.image {
       margin-top: 5px;
     }
   }
+  
 }
 
 

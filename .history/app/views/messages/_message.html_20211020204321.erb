@@ -11,11 +11,10 @@
                 <span class="content">
                     <%= message.content %>
                 </span>
+                <span class="timestamp">
+                    Posted <%= time_ago_in_words(message.created_at) %> ago.
+                </span>        
             </div>
-            <span class="timestamp">
-                Posted <%= time_ago_in_words(message.created_at) %> ago.
-            </span>        
-            
             
         </section>
     <% else %>
@@ -30,11 +29,10 @@
                 <span class="content">
                     <%= message.content %>
                 </span>
+                <span class="timestamp">
+                    Posted <%= time_ago_in_words(message.created_at) %> ago.
+                </span>
             </div>
-            <span class="timestamp">
-                Posted <%= time_ago_in_words(message.created_at) %> ago.
-            </span>
-            
         </section>
     <% end %>
 </li>
