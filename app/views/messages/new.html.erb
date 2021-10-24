@@ -1,0 +1,7 @@
+<%= provide(:title, "New message") %>
+<h1>New message</h1>
+<div>
+    To<%= @user.name %>
+    <%= gravatar_for @user %>
+<div>
+<%= render 'messages/message_form' %>

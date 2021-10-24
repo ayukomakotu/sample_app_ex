@@ -7,7 +7,7 @@
             <%= @user.name %>
           </h1>
           <h1>
-            <%= link_to "sent_message", new_message_path(@user) %>
+            <%= render 'messages/message_form' %>
           </h1>
         </section>
         <section class="stats">

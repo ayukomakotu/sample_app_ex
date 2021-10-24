@@ -3,7 +3,7 @@
     <div class="field">
         <%= f.text_area :content, placeholder: "Compose new message..." %>
     </div>
-    <%= f.hidden_field :talk_id, :value => params[:id] %>
+    <%= hidden_field_tag :talk_id, params[:id] %>
     <%= f.submit "Sent message!", class: "btn btn-primary" %>
     <span class="image">
     <%= f.file_field :image, accept:  "image/jpeg,image/gif,image/png" %>

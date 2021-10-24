@@ -6,9 +6,6 @@
             <%= gravatar_for @user %>
             <%= @user.name %>
           </h1>
-          <h1>
-            <%= link_to "sent_message", new_message_path(@user) %>
-          </h1>
         </section>
         <section class="stats">
           <%= render 'shared/stats' %>
