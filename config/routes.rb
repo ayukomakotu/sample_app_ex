@@ -26,8 +26,16 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   resources :replies,             only: [:create, :destroy]
+  
   resources :talks,               only: :show
+  #talk詳細　message一覧
+
   get '/users/:id/talk_index', to: 'talks#index', as: :talk_index
   #talk一覧用のルーティング
+  
+  get '/users/:id/new_message', to: 'messages#new', as: :new_message
+  #新規メッセージ
+  
+  resources :messages,            only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

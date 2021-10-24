@@ -8,5 +8,7 @@ class TalksController < ApplicationController
         @talk = Talk.find(params[:id])
         @title = @talk.members.map(&:name).delete(current_user.name)
         @messages = @talk.messages
+        @user = User.find(params[:id])
+        @message = @user.messages.build
     end
 end
