@@ -8,7 +8,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should be redirect new" do
-    get new_message_path(@user)
+    get talk_path(@talk)
     assert_redirected_to login_url
   end
 

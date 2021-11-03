@@ -8,11 +8,11 @@ class TalksControllerTest < ActionDispatch::IntegrationTest
 
   #talk一覧
   test "should redirect index" do
-    get talk_index_path(@user)
+    get talks_user_path(@user)
     assert_redirected_to login_url
     log_in_as(@user)
-    get talk_index_path(@user)
-    assert_template 'talks/index'
+    get talks_user_path(@user)
+    assert_template 'users/talks'
   end
 
   #talk詳細message一覧
