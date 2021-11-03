@@ -1,0 +1,9 @@
+<% 50.times do |n| %>
+membership_<%= n %>:
+  user: michael
+  talk: talk_<%= n %>
+
+membership_<%= n+50 %>:
+  user: user_<%= n %>
+  talk: talk_<%= n %>
+<% end %>

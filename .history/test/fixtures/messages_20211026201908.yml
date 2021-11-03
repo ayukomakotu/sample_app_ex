@@ -1,0 +1,6 @@
+<% 30.times do |n| %>
+message_n:
+  talk: talk_n
+  user: user_n
+  content: <%= Faker::Lorem.sentence(word_count: 5) %>
+<% end %>

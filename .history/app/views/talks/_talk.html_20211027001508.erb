@@ -1,0 +1,19 @@
+<li id="talk-<%= talk.id %>">
+    <% if talk.messages.any? %>
+        <span class="user">
+            <% talk.members.each do |member| %> 
+                <% if talk.messages.any?  && member != current_user %>
+                    <%= gravatar_for(member, size: 50) %>
+                    <%= talk.messages.first.user.name %>
+                <% end %>
+            <% end %>
+        </span>
+        <span class="content">
+            
+        </span>
+        <span class="timestamp">
+            Posted <%= time_ago_in_words(talk.messages.first.created_at) %> ago.
+        </span>
+        <span class="view_all"><%= link_to "view all", talk_path(talk) %></span>
+    <% end %>
+</li>
