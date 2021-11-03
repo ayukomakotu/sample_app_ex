@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
-                                        :following, :followers, :talks]
+                                        :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
-    @talk = Talk.new
   end
   
   # GET /users/new
@@ -93,7 +92,5 @@ class UsersController < ApplicationController
       def admin_user
         redirect_to(root_url) unless current_user.admin?
       end
-
-      
 end
 

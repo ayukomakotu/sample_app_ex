@@ -1,26 +1,16 @@
-class TalksController < ApplicationController
+class MessagesController < ApplicationController
     before_action :logged_in_user
-    def index
-        @talks = current_user.talks.paginate(page: params[:page])
-    end
-
-    def show
-        @talk = Talk.find(params[:id])
-        @title = @talk.members.map(&:name).delete(current_user.name)
-        @talk.members.each do |member|
-            if member != current_user
-                @user = member
-            end
-        end
-        @messages = @talk.messages
-        @message = @user.messages.build
-    end
 
     def create
-        @user = User.find(params[:user_id])
-        find_talk
-        create_talk unless @talk
-        redirect_to talk_path(@talk)
+        @talk = Talk.find(params[:message][:talk_id])
+        @message = current_user.messages.build(message_params)
+        @messages = @talk.messages
+        if @message.save
+            flash[:success] = "Send message!"
+            redirect_to talk_path(@talk)
+        else
+            render 'talks/show'
+        end
     end
 
     private
@@ -40,5 +30,9 @@ class TalksController < ApplicationController
             @talk = Talk.create!
             @talk.memberships.create!(user_id: current_user.id)
             @talk.memberships.create!(user_id: @user.id)
+        end
+
+        def message_params
+            params.require(:message).permit(:content, :talk_id, :user_id, :image)
         end
 end

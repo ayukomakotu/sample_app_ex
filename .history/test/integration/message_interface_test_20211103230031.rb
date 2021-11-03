@@ -47,7 +47,9 @@ class MessageInterfaceTest < ActionDispatch::IntegrationTest
     #ログイン時
     log_in_as(@sender)
     get user_path(@receiver)
+    assert_select 'a[href=?]', talk_path(@talk)
     get talk_path(@talk)
+    follow_redirect!
     assert_template 'talks/show'
     assert_select 'a[href=?]', user_path(@receiver)
     assert_select 'a[href=?]', user_path(@sender)

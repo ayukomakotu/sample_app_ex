@@ -27,10 +27,9 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   resources :replies,             only: [:create, :destroy]
   
-  resources :talks,               only: [:show, :create]
+  resources :talks,               only: :show
   #talk詳細　message一覧
   
   resources :messages,            only: [:create]
-  #message_form
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

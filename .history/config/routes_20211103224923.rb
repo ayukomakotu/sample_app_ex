@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   resources :replies,             only: [:create, :destroy]
   
-  resources :talks,               only: [:show, :create]
+  resources :talks,               only: :show
   #talk詳細　message一覧
   
   resources :messages,            only: [:create]

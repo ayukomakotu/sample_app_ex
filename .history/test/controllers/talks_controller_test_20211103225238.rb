@@ -12,7 +12,7 @@ class TalksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
     log_in_as(@user)
     get talks_user_path(@user)
-    assert_template 'users/talks'
+    assert_template 'talks/index'
   end
 
   #talk詳細message一覧
