@@ -49,3 +49,9 @@ end
   Message.create!(talk_id: n+1, user_id: users[n].id, content: content)
   Message.create!(talk_id: n+1, user_id: users[0].id, content: content)
 end
+
+(0..25).each do |n|
+  content = Faker::Lorem.sentence(word_count: 5)
+  Message.create!(talk_id: 1, user_id: users[0].id, content: content)
+  Message.create!(talk_id: 1, user_id: users[1].id, content: content)
+end

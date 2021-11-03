@@ -16,10 +16,14 @@ class User < ApplicationRecord
 
     has_many :followers,                through: :passive_relationships,
                                          source: :follower
-    has_many :messages
-    has_many :memberships
+
+    has_many :messages,               dependent: :destroy
+
+    has_many :memberships,            dependent: :destroy
+
     has_many :talks,                    through: :memberships,
-                                         source: :talk
+                                         source: :talk,
+                                      dependent: :destroy
     #user.talksでuserの参加しているtalkを表示する
     #userのuser_idを参照してmembershipを取り出し、そのmembershipからtalk_idを参照してtalkを取り出す
     attr_accessor :remember_token, 

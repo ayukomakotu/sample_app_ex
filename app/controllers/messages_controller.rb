@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+    before_action :logged_in_user
+
     def new
         @message = current_user.messages.build
         @user = User.find(params[:id])

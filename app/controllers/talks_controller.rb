@@ -1,5 +1,5 @@
 class TalksController < ApplicationController
-    before_action :logged_in_user, only: :index
+    before_action :logged_in_user
     def index
         @talks = current_user.talks.paginate(page: params[:page])
     end
@@ -7,8 +7,12 @@ class TalksController < ApplicationController
     def show
         @talk = Talk.find(params[:id])
         @title = @talk.members.map(&:name).delete(current_user.name)
+        @talk.members.each do |member|
+            if member != current_user
+                @user = member
+            end
+        end
         @messages = @talk.messages
-        @user = User.find(params[:id])
         @message = @user.messages.build
     end
 end
