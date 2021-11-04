@@ -9,7 +9,7 @@ class TalkTest < ActiveSupport::TestCase
     assert @talk.valid?
   end
 
-  test "order should be most recent first" do
-    assert_equal talks(:most_recent), Talk.first
-  end
+  #test "order should be most recent first" do
+   # assert_equal talks(:most_recent), Talk.firs
+  #end
 end

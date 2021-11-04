@@ -10,6 +10,6 @@ class TalkTest < ActiveSupport::TestCase
   end
 
   test "order should be most recent first" do
-    assert_equal talks(:most_recent), Talk.first
+    assert_equal talks(:most_recent), Talk.firs
   end
 end

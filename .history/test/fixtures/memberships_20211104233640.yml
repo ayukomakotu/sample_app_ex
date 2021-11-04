@@ -7,12 +7,12 @@ membership2:
   talk: talk1
 
 
-<% 50.times do |n| %>
+<% 30.times do |n| %>
 membership_<%= n %>:
   user: michael
   talk: talk_<%= n %>
 
-membership_<%= n+50 %>:
+membership_<%= n+30 %>:
   user: user_<%= n %>
   talk: talk_<%= n %>
 <% end %>

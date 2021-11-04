@@ -2,13 +2,13 @@ test_message1:
   talk: talk1
   user: michael
   content: test_message
-  created_at: <%= 10.minutes.ago %>
+  createa_at: <%= 10.minutes.ago %>
 
 test_message2:
   talk: talk1
   user: archer
   content: test_message2
-  created_at: <%= 20.minutes.ago %>
+  created_at: <%= 20.minutes
 
 <% 50.times do |n| %>
 message_<%= n %>:
@@ -22,9 +22,3 @@ message_<%= n+50 %>:
   content: <%= Faker::Lorem.sentence(word_count: 5) %>
   created_at: <%= 2.days.ago %>
 <% end %>
-
-most_recent: 
-  talk: most_recent
-  user: michael
-  content: "most_recent"
-  created_at: <%= Time.zone.now %>

@@ -6,7 +6,7 @@ talk2:
 
 <% 50.times do |n| %>
 talk_<%= n %>: 
-  updated_at: <%= 1.days.ago %>
+  updated_at: <%= 2.days.ago %>
 <% end %>
 
 most_recent:

@@ -2,7 +2,7 @@ test_message1:
   talk: talk1
   user: michael
   content: test_message
-  created_at: <%= 10.minutes.ago %>
+  createa_at: <%= 10.minutes.ago %>
 
 test_message2:
   talk: talk1
@@ -26,5 +26,4 @@ message_<%= n+50 %>:
 most_recent: 
   talk: most_recent
   user: michael
-  content: "most_recent"
   created_at: <%= Time.zone.now %>

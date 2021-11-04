@@ -1,0 +1,10 @@
+talk1: 
+
+talk2: {}
+
+<% 50.times do |n| %>
+talk_<%= n %>: {}
+<% end %>
+
+most_recent:
+  updated_at: <%= Time.zone.now %>
