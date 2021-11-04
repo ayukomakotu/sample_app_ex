@@ -6,6 +6,8 @@ class MessagesController < ApplicationController
         @message = current_user.messages.build(message_params)
         @messages = @talk.messages
         if @message.save
+            @talk.updated_at = Time.zone.now
+            @talk.save
             flash[:success] = "Send message!"
             redirect_to talk_path(@talk)
         else

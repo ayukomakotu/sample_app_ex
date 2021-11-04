@@ -4,7 +4,7 @@
             <% talk.members.each do |member| %> 
                 <% if talk.messages.any?  && member != current_user %>
                     <%= gravatar_for(member, size: 50) %>
-                    <%= talk.messages.first.user.name %>
+                    <%= member.name %>
                 <% end %>
             <% end %>
         </span>

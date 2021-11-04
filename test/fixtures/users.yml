@@ -35,7 +35,7 @@ jason:
   activated_at: nil
 
 
-<% 30.times do |n| %>
+<% 50.times do |n| %>
 user_<%= n %>:
   name:  <%= "User #{n}" %>
   email: <%= "user-#{n}@example.com" %>

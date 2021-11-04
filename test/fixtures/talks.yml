@@ -1,7 +1,13 @@
-talk1: {}
+talk1: 
+  updated_at: <%= 10.minutes.ago %>
 
-talk2: {}
+talk2: 
+  updated_at: <%= 2.hours.ago %>
 
 <% 50.times do |n| %>
-talk_<%= n %>: {}
+talk_<%= n %>: 
+  updated_at: <%= 1.days.ago %>
 <% end %>
+
+most_recent:
+  updated_at: <%= Time.zone.now %>

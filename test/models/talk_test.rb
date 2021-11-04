@@ -8,4 +8,8 @@ class TalkTest < ActiveSupport::TestCase
   test "should be valid?" do
     assert @talk.valid?
   end
+
+  test "order should be most recent first" do
+    assert_equal talks(:most_recent), Talk.first
+  end
 end
