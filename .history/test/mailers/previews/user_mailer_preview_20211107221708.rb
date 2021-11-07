@@ -17,8 +17,7 @@ class UserMailerPreview < ActionMailer::Preview
 
   def more_followers
     user = User.first
-    follower = user.followers.last
-    UserMailer.more_followers(user, follower)
+    UserMailer.more_followers(user)
   end
 
 end

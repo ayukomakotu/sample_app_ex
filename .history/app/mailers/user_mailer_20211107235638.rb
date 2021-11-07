@@ -15,7 +15,7 @@ class UserMailer < ApplicationMailer
 
   def more_followers(user, follower) #<= 引数を追加してfollowrの情報を扱える様にした
     @user = user
-    @follower = follower#followしたuserの情報をメール内で扱うため
+    @follower = follower#メール内でfollower
     mail to: user.email, subject: "More followers"
   end
 end

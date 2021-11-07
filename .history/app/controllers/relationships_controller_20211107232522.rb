@@ -8,7 +8,7 @@ class RelationshipsController < ApplicationController
             format.html { redirect_to @user }
             format.js
         end
-        @user.send_more_followers_email(current_user)
+        @user.send_more_followers_email
     end
   
     #DELETE /Relationships/ :id
