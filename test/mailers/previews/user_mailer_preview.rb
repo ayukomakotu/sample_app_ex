@@ -15,4 +15,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.password_reset(user)
   end
 
+  def more_followers
+    user = User.first
+    follower = user.followers.last
+    UserMailer.more_followers(user, follower)
+  end
+
 end

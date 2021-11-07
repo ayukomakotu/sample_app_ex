@@ -136,6 +136,10 @@ class User < ApplicationRecord
         following.include?(other_user)
     end
 
+    #新しくフォロワーが増えたときの通知メールを送信
+    def send_more_followers_email(follower)
+        UserMailer.more_followers(self, follower).deliver_now
+    end
 
     private
 
