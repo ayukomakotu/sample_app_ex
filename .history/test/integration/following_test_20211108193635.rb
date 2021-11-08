@@ -30,14 +30,13 @@ class FollowingTest < ActionDispatch::IntegrationTest
     assert_difference '@user.following.count', 1 do
       post relationships_path, params: { followed_id: @other.id }
     end
-    assert_equal 1, ActionMailer::Base.deliveries.size
+    assert_equal 0, ActionMailer::Base.deliveries.size
   end
 
   test "should follow a user with Ajax" do
     assert_difference '@user.following.count', 1 do
       post relationships_path, xhr: true, params: { followed_id: @other.id }
     end
-    assert_equal 1, ActionMailer::Base.deliveries.size
   end
 
   test "should unfollow a user the standard way" do

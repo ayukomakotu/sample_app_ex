@@ -33,7 +33,6 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal [user.email],                 mail.to
     assert_equal ["noreply@example.com"],      mail.from
     assert_match follower.name,                mail.body.encoded
-    assert_match "users/#{user.id}/followers", mail.body.encoded
-    assert_match "users/#{follower.id}",       mail.body.encoded
+    assert_match "users/#{follower.id}/followers", mail.body.encoded
   end
 end

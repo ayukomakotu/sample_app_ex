@@ -5,7 +5,6 @@ class FollowingTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
     @other = users(:archer)
     log_in_as(@user)
-    ActionMailer::Base.deliveries.clear
   end
 
   test "following page" do
@@ -30,14 +29,12 @@ class FollowingTest < ActionDispatch::IntegrationTest
     assert_difference '@user.following.count', 1 do
       post relationships_path, params: { followed_id: @other.id }
     end
-    assert_equal 1, ActionMailer::Base.deliveries.size
   end
 
   test "should follow a user with Ajax" do
     assert_difference '@user.following.count', 1 do
       post relationships_path, xhr: true, params: { followed_id: @other.id }
     end
-    assert_equal 1, ActionMailer::Base.deliveries.size
   end
 
   test "should unfollow a user the standard way" do
