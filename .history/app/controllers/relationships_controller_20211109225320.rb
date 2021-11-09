@@ -8,7 +8,6 @@ class RelationshipsController < ApplicationController
             format.html { redirect_to @user }
             format.js
         end
-        #フォロワー通知メール　通知がオンならメールを送信
         if @user.follow_notify == true
             @user.send_more_followers_email(current_user)
         end

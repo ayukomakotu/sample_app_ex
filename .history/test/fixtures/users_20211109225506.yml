@@ -2,18 +2,16 @@ michael:
   name: Michael Example
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
-  admin:         true
-  activated:     true
-  activated_at:  true
-  follow_notify: false
+  admin:        true
+  activated:    true
+  activated_at: true
 
 archer:
   name: Sterling Archer
   email: duchess@example.gov
   password_digest: <%= User.digest('password') %>
-  activated:     true
-  activated_at:  true
-  follow_notify: true
+  activated:    true
+  activated_at: true
 
 lana:
   name: Lana Kane
@@ -36,12 +34,6 @@ jason:
   activated:    false
   activated_at: nil
 
-non_notify:
-  name: non_notify
-  email: non_notify@example.com
-  password_digest: <%= User.digest('password') %>
-  activated:    true
-  activated_at: true
 
 <% 50.times do |n| %>
 user_<%= n %>:
@@ -50,4 +42,5 @@ user_<%= n %>:
   password_digest: <%= User.digest('password') %>
   activated:    true
   activated_at: true
+  follow_notify: true
 <% end %>

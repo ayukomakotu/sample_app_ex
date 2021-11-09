@@ -39,13 +39,11 @@ class FollowingTest < ActionDispatch::IntegrationTest
     end
   end
 
-  #follow_notifyがtrueならメールが送信される
   test "should follow a user with follow_notify" do
     post relationships_path, params: { followed_id: @other.id}
     assert_equal 1, ActionMailer::Base.deliveries.size
   end
 
-  #follow_notifyがfalseならメールは送信されない
   test "should follow a user with unenable follow_notify" do
     post relationships_path, params: {followed_id: @non_notify.id}
     assert_equal 0, ActionMailer::Base.deliveries.size

@@ -5,7 +5,7 @@ michael:
   admin:         true
   activated:     true
   activated_at:  true
-  follow_notify: false
+  follow_notify: true
 
 archer:
   name: Sterling Archer
@@ -36,12 +36,6 @@ jason:
   activated:    false
   activated_at: nil
 
-non_notify:
-  name: non_notify
-  email: non_notify@example.com
-  password_digest: <%= User.digest('password') %>
-  activated:    true
-  activated_at: true
 
 <% 50.times do |n| %>
 user_<%= n %>:

@@ -25,8 +25,8 @@ class UsersController < ApplicationController
   # POST /users (+ params)
   def create
     @user = User.create(user_params)
-    #チェックボックスによって通知のオンオフを切り替える
-    params[:user][:follow_notify] == "1" ? @user.follow_notify = true : @user.follow_notify = false
+    params[:user][:follow_notify] == "1" ? @user.follow_notify = true : 
+                                           @user.follow_notify = false
     if @user.save
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
@@ -46,8 +46,6 @@ class UsersController < ApplicationController
   #PATCH /users/
   def update
     @user = User.find(params[:id])
-    #チェックボックスによって通知のオンオフを切り替える
-    params[:user][:follow_notify] == "1" ? @user.follow_notify = true : @user.follow_notify = false
     if @user.update(user_params)
       # 更新に成功した場合を扱う。
       flash[:success] = "Profile updated"

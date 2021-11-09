@@ -4,8 +4,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
     @other = users(:archer)
-    @non_notify = users(:non_notify)
-    log_in_as(@user)
+    @non_notify = users(:lana)
     ActionMailer::Base.deliveries.clear
   end
 
@@ -39,15 +38,13 @@ class FollowingTest < ActionDispatch::IntegrationTest
     end
   end
 
-  #follow_notifyがtrueならメールが送信される
   test "should follow a user with follow_notify" do
     post relationships_path, params: { followed_id: @other.id}
     assert_equal 1, ActionMailer::Base.deliveries.size
   end
 
-  #follow_notifyがfalseならメールは送信されない
   test "should follow a user with unenable follow_notify" do
-    post relationships_path, params: {followed_id: @non_notify.id}
+    post relationships_path, params: {followed_id: @user.id}
     assert_equal 0, ActionMailer::Base.deliveries.size
   end
 
