@@ -8,7 +8,10 @@ class RelationshipsController < ApplicationController
             format.html { redirect_to @user }
             format.js
         end
-        @user.send_more_followers_email(current_user)
+        #フォロワー通知メール　通知がオンならメールを送信
+        if @user.follow_notify == true
+            @user.send_more_followers_email(current_user)
+        end
     end
   
     #DELETE /Relationships/ :id
