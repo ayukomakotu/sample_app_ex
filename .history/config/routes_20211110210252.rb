@@ -14,9 +14,15 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :talks#talk一覧
+    end
+
+    colection do
+      post :search
     end
   end
+
+  
 
   resources :users
   resources :account_activations, only: [:edit]
@@ -24,5 +30,11 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   resources :replies,             only: [:create, :destroy]
+  
+  resources :talks,               only: [:show, :create]
+  #talk詳細　message一覧
+  
+  resources :messages,            only: [:create]
+  #message_form
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
