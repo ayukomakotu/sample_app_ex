@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     member do
       get :following, :followers, :talks#talk一覧
     end
+
+    collection do
+      post :search
+    end
   end
 
   
