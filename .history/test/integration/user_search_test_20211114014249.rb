@@ -24,16 +24,7 @@ class UserSearchTest < ActionDispatch::IntegrationTest
     assert_match @searched.name, response.body 
     get users_path
     get search_users_path, params: {search: {name: "Archer"}} #部分一致
-    assert_template 'users/search'
     assert_match @searched.name, response.body
     assert_match @other_searched.name, response.body
-  end
-
-  test "user search for id" do
-    log_in_as(@user)
-    get users_path
-    get search_users_path, params: {search: {id: @searched.id}}
-    assert_template 'users/search'
-    assert_match @searched.name, response.body
   end
 end
