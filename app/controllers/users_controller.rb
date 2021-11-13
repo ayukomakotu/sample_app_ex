@@ -82,11 +82,34 @@ class UsersController < ApplicationController
     @talks = current_user.talks.paginate(page: params[:page])
   end
 
+  def search
+    @users = User.where(activated: true).paginate(page: params[:page])
+    if search_params[:name] #nameで検索された場合
+      if search_params[:name].blank? #空白が入力されたらユーザー一覧に戻す
+        render 'index'
+      else      
+        @searched_users = User.where("name LIKE ?",
+              "%#{search_params[:name]}%").paginate(page: params[:page])
+      end
+    elsif search_params[:id] #idで検索された場合
+      if search_params[:id].blank? #空白が入力されたらユーザー一覧に戻る
+        render 'index'
+      else
+        @searched_users = User.where(id: search_params[:id]
+                          ).paginate(page: params[:page])
+      end
+    end
+  end
+
 
   private
       def user_params
         params.require(:user).permit(:name, :email, :password,
                                     :password_confirmation,)
+      end
+
+      def search_params
+        params.require(:search).permit(:name, :id)
       end
 
       def correct_user
@@ -97,7 +120,6 @@ class UsersController < ApplicationController
       def admin_user
         redirect_to(root_url) unless current_user.admin?
       end
-
       
 end
 
