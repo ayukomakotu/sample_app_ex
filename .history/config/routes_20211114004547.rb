@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       get :following, :followers, :talks#talk一覧
     end
 
-    collection do #user検索用
+    collection do　#user検索用
       get :search
     end
   end
@@ -38,4 +38,3 @@ Rails.application.routes.draw do
   #message_form
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-end

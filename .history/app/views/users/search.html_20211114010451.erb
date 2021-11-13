@@ -1,0 +1,11 @@
+<%= provide(:title, "Searched Users") %>
+<h1>Searched users</h1>
+
+<ul class="users">
+    <% @searched_users.each do |searched_user| %>
+        <li>
+            
+        </li>
+    <% end %>
+</ul>
+<%= will_paginate @searched_users %>
