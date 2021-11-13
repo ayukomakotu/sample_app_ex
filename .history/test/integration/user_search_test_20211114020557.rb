@@ -25,7 +25,7 @@ class UserSearchTest < ActionDispatch::IntegrationTest
     get users_path
     get search_users_path, params: {search: {id: 0}}
     assert_template 'users/search'
-    assert_match "User not found", response.body
+    assert_match "User not found", resposne.body
   end
   
   test "user search for name" do

@@ -13,7 +13,7 @@ class UserSearchTest < ActionDispatch::IntegrationTest
     get users_path
     get search_users_path, params: {search: {name: "   "}}
     assert_template 'users/index'
-    #idが空白
+ 　　#idが空白
     get users_path
     get search_users_path, params: {search: {id: "  "}}
     assert_template 'users/index'
@@ -21,11 +21,7 @@ class UserSearchTest < ActionDispatch::IntegrationTest
     get users_path
     get search_users_path, params: {search: {name: "nobody"}}
     assert_template 'users/search'
-    assert_match "User not found", response.body
-    get users_path
-    get search_users_path, params: {search: {id: 0}}
-    assert_template 'users/search'
-    assert_match "User not found", response.body
+    
   end
   
   test "user search for name" do
