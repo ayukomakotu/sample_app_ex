@@ -1,0 +1,20 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+<h3 class="search_user">Search user</h3>
+<h4 class="search_user">search for name</h4>
+<%= render 'users/user_search_form' %>
+
+<%= will_paginate %>
+
+<ul class="users">
+
+  <%= render @users %>
+
+  <%# デフォルトで以下のコードを呼び出すパーシャルになっている　%>
+  <%# @users.each do |user| %>
+    <%#= render user %>
+  <%# end %>
+
+</ul>
+
+<%= will_paginate %>

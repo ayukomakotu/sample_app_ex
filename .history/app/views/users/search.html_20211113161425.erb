@@ -1,0 +1,12 @@
+<%= provide(:title, "Searched Users") %>
+<h1>Searched users</h1>
+
+<ul class="users">
+    <% @searched_users.each do |searched_user| %>
+        <li>
+        <%= gravatar_for searched_user, size: 50 %>
+        <%= link_to searched_user.name, searched_user %>
+        </li>
+    <% end %>
+</ul>
+<%= will_paginate @searched_users %>

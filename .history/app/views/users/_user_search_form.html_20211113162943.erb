@@ -1,0 +1,11 @@
+<div class="search_way">search for name</h4>
+    <%= form_with(url: search_users_path, scope: :search, #params[:search]に保存
+                                          method: :get, #searchアクションを指定
+                                          local: true) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.submit "search user", class: "btn btn-primary" %>
+    
+    <% end %>
+</div>
