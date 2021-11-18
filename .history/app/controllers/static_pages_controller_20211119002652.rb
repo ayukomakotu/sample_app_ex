@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
       if params[:search]
         @search = @feed_items.where("content LIKE ?", 
                       "%#{params[:search][:content]}%")
+                      debugger
       end
     end
   end
