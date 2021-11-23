@@ -15,12 +15,26 @@
               <div><%= hidden_field_tag :user_id, @user.id %></div>
               <%= f.submit "Message", class: "btn btn-primary" %>
             <% end %>
+        <section class="search">
+            <h1>search micropost</h1>
+            <%= form_with(url: user_path(@user), scope: :search,
+                                      method: :get,
+                                      local: true) do |f| %>
+              <%= f.label :content %>
+              <%= f.text_field :content, class: 'form-control' %>
+          
+              <%= f.submit "search micropost", class: "btn btn-primary" %>
+            <% end %>
+        </section>
       </aside>
       <div class="col-xs-8">
         <%= render 'follow_form' if logged_in? %>
         <% if @user.microposts.any? %>
           <h3>Microposts (<%= @user.microposts.count %>)</h3>
           <ol class="microposts">
+            <% if params[:search] %>
+              <h4>search result</h4>
+            <% end %>
             <%= render @microposts %>
           </ol>
           <%= will_paginate @microposts %>

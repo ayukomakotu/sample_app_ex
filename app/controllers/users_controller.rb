@@ -12,7 +12,12 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
+    if params[:search]
+      @microposts = @user.microposts.where("content LIKE ?", 
+      "%#{params[:search][:content]}%").paginate(page: params[:page])
+    else
+      @microposts = @user.microposts.paginate(page: params[:page])  
+    end
     redirect_to root_url and return unless @user.activated?
     @talk = Talk.new
   end
