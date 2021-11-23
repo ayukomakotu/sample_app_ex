@@ -33,7 +33,7 @@
           <h3>Microposts (<%= @user.microposts.count %>)</h3>
           <ol class="microposts">
             <% if params[:search] %>
-              <h4>search result</h4>
+              <h2>search result</h2>
             <% end %>
             <%= render @microposts %>
           </ol>
