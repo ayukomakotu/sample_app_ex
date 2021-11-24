@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
       @feed_items = current_user.feed.paginate(page: params[:page])
       if params[:search]
         @search = @feed_items.where("content LIKE ?", 
-                      "%#{params[:search][:content]}%")
+                      "%#{params[:search][:content]}%").paginate(page: params[:page])
       end
     end
   end
