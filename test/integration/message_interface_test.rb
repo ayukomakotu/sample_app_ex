@@ -46,7 +46,10 @@ class MessageInterfaceTest < ActionDispatch::IntegrationTest
     end
     #ログイン時
     log_in_as(@sender)
+    get user_path(@sender)
+    assert_select 'input[type=submit]', count: 1 #自分のプロフィールにはmessageフォームがない
     get user_path(@receiver)
+    assert_select 'input[type=submit]', count: 3 #他人のプロフィールにmessageformが存在
     get talk_path(@talk)
     assert_template 'talks/show'
     assert_select 'a[href=?]', user_path(@receiver)
@@ -70,6 +73,5 @@ class MessageInterfaceTest < ActionDispatch::IntegrationTest
                                                user_id: @sender.id}}
     end
     assert_not flash.empty?
-    
   end
 end

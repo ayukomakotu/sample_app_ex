@@ -11,9 +11,11 @@
         <section class="stats">
           <%= render 'shared/stats' %>
         </section>
-            <%= form_with(model: @talk, remote: true) do |f| %>
-              <div><%= hidden_field_tag :user_id, @user.id %></div>
-              <%= f.submit "Message", class: "btn btn-primary" %>
+            <% if @user != current_user %>
+              <%= form_with(model: @talk, remote: true) do |f| %>
+                <div><%= hidden_field_tag :user_id, @user.id %></div>
+                <%= f.submit "Message", class: "btn btn-primary" %>
+              <% end %>
             <% end %>
         <section class="search">
             <h1>search micropost</h1>
