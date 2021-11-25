@@ -47,9 +47,8 @@ class MessageInterfaceTest < ActionDispatch::IntegrationTest
     #ログイン時
     log_in_as(@sender)
     get user_path(@sender)
-    assert_select 'input[type=submit]', count: 1 #自分のプロフィールにはmessageフォームがない
+    #assert_select 'input[type=file]'
     get user_path(@receiver)
-    assert_select 'input[type=submit]', count: 3 #他人のプロフィールにmessageformが存在
     get talk_path(@talk)
     assert_template 'talks/show'
     assert_select 'a[href=?]', user_path(@receiver)
@@ -57,7 +56,7 @@ class MessageInterfaceTest < ActionDispatch::IntegrationTest
     @talk.messages.each do |message|
       assert_match message.content, response.body
     end
-    assert_select 'input[type=file]'
+    assert_select 'input[type=hidden]'
    
     #無効な送信
     assert_no_difference 'Message.count' do
