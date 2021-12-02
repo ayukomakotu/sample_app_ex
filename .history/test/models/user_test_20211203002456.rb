@@ -37,6 +37,7 @@ class UserTest < ActiveSupport::TestCase
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
       @user.email = valid_address
+      debugger
       assert @user.valid?, "#{valid_address.inspect} should be valid"
     end
   end
@@ -110,7 +111,8 @@ class UserTest < ActiveSupport::TestCase
       assert_not michael.feed.include?(post_unfollowed)
     end
     #返信を確認
-    debugger
+    @reply = Reply.new(in_reply_to: michael.id, micropost_id: reply.id)
+    @reply.save
     assert michael.feed.include?(reply)
   end
 end
