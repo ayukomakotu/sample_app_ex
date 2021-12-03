@@ -61,24 +61,9 @@ RSpec.describe User, type: :model do
       expect(duplicate_user).to be_invalid
     end
 
-    it "passwordが空白の場合無効になるか" do
+    it "passwordが空白の場合無効になるか"　do
       @user.password = @user.password_confirmation = " " * 6
       expect(@user).to be_invalid
-    end
-
-    it "passwordが短すぎる場合無効になるか" do
-      @user.password = @user.password_confirmation = "a" * 5
-      expect(@user).to be_invalid
-    end
-
-    it "remember_digestがnilの場合、authenticated?はfalseを返しているか" do
-      expect(@user.authenticated?(:remember, '')).to eq false
-    end
-
-    it "userが削除された時、micropostも削除されるか" do
-      @user.save
-      @user.microposts.create!(content: "Lorem ipsum")
-      expect{@user.destroy}.to change{Micropost.count}.by(-1)
     end
 
     

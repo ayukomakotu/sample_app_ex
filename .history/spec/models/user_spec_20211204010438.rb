@@ -78,9 +78,7 @@ RSpec.describe User, type: :model do
     it "userが削除された時、micropostも削除されるか" do
       @user.save
       @user.microposts.create!(content: "Lorem ipsum")
-      expect{@user.destroy}.to change{Micropost.count}.by(-1)
+      expect{@user.destroy}.to change{'Micropost.count'}.by(-1)
     end
-
-    
   end
 end
