@@ -1,6 +1,6 @@
 FactoryBot.define do
 
- 
+  debugger
   factory :membership1 do
     user  {michael}
     talk  {talk1}

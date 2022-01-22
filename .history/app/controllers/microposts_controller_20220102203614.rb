@@ -3,8 +3,8 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def create
-    @micropost = current_user.microposts.build(micropost_params)
     debugger
+    @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       @micropost.including_replies
       flash[:success] = "Micropost created!"
