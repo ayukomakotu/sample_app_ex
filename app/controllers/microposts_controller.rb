@@ -4,6 +4,7 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
+    debugger
     if @micropost.save
       @micropost.including_replies
       flash[:success] = "Micropost created!"
