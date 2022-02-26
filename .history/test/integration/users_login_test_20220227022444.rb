@@ -26,7 +26,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'users/show'
     assert_select "a[href=?]", login_path, count: 0
-    assert_select "input[value=delete]" #link_toをbutton_toに変更したため
+    assert_select "input[value=Log out]"
     assert_select "a[href=?]", user_path(@user)
 
     delete logout_path

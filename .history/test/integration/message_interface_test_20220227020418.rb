@@ -47,7 +47,7 @@ class MessageInterfaceTest < ActionDispatch::IntegrationTest
     #ログイン時
     log_in_as(@sender)
     get user_path(@sender)
-    assert_select 'input[value=Message]', count: 0 #自分のプロフィールにはmessageフォームがない
+    assert_select 'input[type=submit]', text: "message", count: 0 #自分のプロフィールにはmessageフォームがない
     get user_path(@receiver)
     assert_select 'input[value=Message]', count: 1 #他人のプロフィールにmessageformが存在
     get talk_path(@talk)

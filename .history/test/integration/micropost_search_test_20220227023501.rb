@@ -10,7 +10,7 @@ class MicropostSearchTest < ActionDispatch::IntegrationTest
   test "search micropost in feed" do
     log_in_as(@user)
     get root_path
-    assert_select "input[value~=feed]"
+    assert_select "form", 2
     get root_path, params: {search: {content: @micropost.content}}
     assert_template 'static_pages/home'
     #完全一致
@@ -27,7 +27,7 @@ class MicropostSearchTest < ActionDispatch::IntegrationTest
   test "search micropost in user" do
     log_in_as(@other)
     get user_path(@user)
-    assert_select "input[value~=search]"
+    assert_select "input[type=submit]", text: "search micropost"
     get user_path(@user), params: {search: {content: @micropost.content}}
     assert_template 'users/show'
     #完全一致
