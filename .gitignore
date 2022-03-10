@@ -39,5 +39,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-/config/environment
-.history/config/environment
+
+
+
+#メールとアプリパスワードを非表示にする
+config/environments/
+.history/config/environments/
