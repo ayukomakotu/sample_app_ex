@@ -43,5 +43,4 @@ yarn-debug.log*
 
 
 #メールとアプリパスワードを非表示にする
-config/environments/
-.history/config/environments/
+.env
