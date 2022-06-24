@@ -45,4 +45,5 @@ yarn-debug.log*
 #メールとアプリパスワードを非表示にする #.envにメールアドレスとパスワードを環境変数として保存
 .env
 
-#sss
+#historyはあげない
+.history
