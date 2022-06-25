@@ -20,6 +20,7 @@ gem 'jbuilder'
 gem 'bootsnap', require: false
 gem 'rexml'
 gem 'rss'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'sqlite3'
