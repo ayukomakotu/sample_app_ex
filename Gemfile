@@ -12,11 +12,11 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass'
-# gem 'puma'
+gem 'puma'
 gem 'sassc-rails'
 gem "sprockets-rails"
 gem "importmap-rails"
-# gem "turbo-rails"   
+gem "turbo-rails"   
 gem "stimulus-rails"
 # gem 'webpacker', '~> 6.0.0.pre.2'
 # gem 'turbolinks'
